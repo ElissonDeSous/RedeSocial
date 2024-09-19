@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+    postgres:
+      container_name: rede_social_postgres
+      image: postgres
+      ports:
+         - 5433:5432
+      environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=4002
+      - POSTGRES_DB=rede_social

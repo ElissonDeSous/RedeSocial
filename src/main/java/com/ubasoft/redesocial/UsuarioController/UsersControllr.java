@@ -1,5 +1,7 @@
 package com.ubasoft.redesocial.UsuarioController;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +14,13 @@ import jakarta.validation.Valid;
 @RequestMapping("/createusers")
 public class UsersControllr {
     
+    @Autowired
+    private UserRepository RepositorioUsuario;
 
     @PostMapping("/")
 
-    public String CreateUsers(@Valid @RequestBody UsersEntity CriarUsers){
-        return CriarUsers.getNome() + "\n" + CriarUsers.getEmail();
+    public UsersEntity CreateUsers(@Valid @RequestBody UsersEntity CriarUsers){
+        return this.RepositorioUsuario.save(CriarUsers);
     }
+
 }
